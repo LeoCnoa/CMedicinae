@@ -5,6 +5,8 @@
  */
 package cnncmdb;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rafaelgs
@@ -132,16 +134,25 @@ public class jfConfServ extends javax.swing.JFrame {
         cnn.setUrl("jdbc:mysql://"+jtxtIPServ.getText()+"/cmdb");
         cnn.setUser(jtxtUsuario.getText());
         
-        cnn.CMDB();
+        if (cnn.CMDB()==1){
+            dispose();
+        }
     }//GEN-LAST:event_jbtnSalSaiActionPerformed
 
     private void jbtnTestConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnTestConActionPerformed
         // TODO add your handling code here:
+        CMDB cnn = new CMDB();
+        
+        cnn.setPassw(jptxtSenha.getText());
+        cnn.setUrl("jdbc:mysql://"+jtxtIPServ.getText()+"/cmdb");
+        cnn.setUser(jtxtUsuario.getText());
+        
+        cnn.CMDB();
     }//GEN-LAST:event_jbtnTestConActionPerformed
 
     private void jbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSairActionPerformed
         // TODO add your handling code here:
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_jbtnSairActionPerformed
 
     /**

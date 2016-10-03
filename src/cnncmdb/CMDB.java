@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import msgmerro.Erro;
+import msgmerro.*;
 
 /**
  *
@@ -19,6 +19,7 @@ import msgmerro.Erro;
 public class CMDB {
 
     Erro err = new Erro();
+    Sucesso suc = new Sucesso();
     private Connection con;
     private Statement stmt;
     private ResultSet resuls;
@@ -36,7 +37,7 @@ public class CMDB {
             Class.forName(getDriver()).newInstance();
             setCon(DriverManager.getConnection(getUrl(), getUser(), getPassw()));
 
-            System.out.println("Conectado com sucesso!");
+            suc.Sucesso("Conectado com sucesso!");
             val = 1;
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             jfConfServ conf  = new jfConfServ();
