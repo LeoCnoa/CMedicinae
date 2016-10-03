@@ -134,7 +134,7 @@ public class jfConfServ extends javax.swing.JFrame {
         cnn.setUrl("jdbc:mysql://"+jtxtIPServ.getText()+"/cmdb");
         cnn.setUser(jtxtUsuario.getText());
         
-        if (cnn.CMDB()==1){
+        if (cnn.CMDB(0)==1){
             dispose();
         }
     }//GEN-LAST:event_jbtnSalSaiActionPerformed
@@ -147,7 +147,7 @@ public class jfConfServ extends javax.swing.JFrame {
         cnn.setUrl("jdbc:mysql://"+jtxtIPServ.getText()+"/cmdb");
         cnn.setUser(jtxtUsuario.getText());
         
-        cnn.CMDB();
+        cnn.CMDB(0);
     }//GEN-LAST:event_jbtnTestConActionPerformed
 
     private void jbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSairActionPerformed

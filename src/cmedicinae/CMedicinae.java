@@ -5,20 +5,25 @@
  */
 package cmedicinae;
 
-import cnncmdb.CMDB; 
-
+import cnncmdb.CMDB;
 
 public class CMedicinae {
-        
+
     public static void main(String[] args) {
         // TODO code application logic here
-        CMDB cnn = new CMDB();
-        jfLogin log = new jfLogin();
+        ini();
+    }
+
+    public static void ini() {
         
-        if (cnn.CMDB()== 1){
+        CMDB cnn = new CMDB();
+        if (cnn.CMDB(1) == 1) {
+            jfLogin log = new jfLogin();
             log.setVisible(true);
-            log.setLocationRelativeTo(null);            
+            log.setLocationRelativeTo(null);
+        } else {
+
         }
     }
-    
+
 }

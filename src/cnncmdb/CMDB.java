@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import msgmerro.*;
+import cmedicinae.*;
 
 /**
  *
@@ -20,6 +21,7 @@ public class CMDB {
 
     Erro err = new Erro();
     Sucesso suc = new Sucesso();
+    CMedicinae start = new CMedicinae();
     private Connection con;
     private Statement stmt;
     private ResultSet resuls;
@@ -29,8 +31,8 @@ public class CMDB {
     private String passw; //"toor";
     private String driver = "com.mysql.jdbc.Driver";
 
-    public int CMDB() {
-        
+    public int CMDB(int dov) {
+
         int val = 0;
 
         try {
@@ -38,17 +40,25 @@ public class CMDB {
             setCon(DriverManager.getConnection(getUrl(), getUser(), getPassw()));
 
             suc.Sucesso("Conectado com sucesso!");
+
             val = 1;
+
+            if (dov == 1) {
+                CMedicinae.ini();
+            }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
-            jfConfServ conf  = new jfConfServ();
+            jfConfServ conf = new jfConfServ();
             err.Erro("Falha na Conexão com o Danco de Dados");
             val = 0;
-            
-            conf.setVisible(true);
-            conf.setLocationRelativeTo(null);
-            conf.setAutoRequestFocus(true);
+
+            if (dov == 0 || dov == 1) {
+                conf.setVisible(true);
+                conf.setLocationRelativeTo(null);
+                conf.setAutoRequestFocus(true);
+            }
+
         }
-        
+
         return val;
 
     }
@@ -57,7 +67,7 @@ public class CMDB {
 
         try {
             CMDB cmdb = new CMDB();
-            cmdb.CMDB();
+            cmdb.CMDB(0);
             setStmt(cmdb.getCon().createStatement());
         } catch (Exception e) {
             err.Erro("Falha na criação do Statement");
